@@ -270,10 +270,10 @@ async function receivedMessage(event) {
               template_type: "generic",
               elements: documents.map(function(document) {
                 return {
-                  title: document.homepageHead,
-                  subtitle: document.homepageTeaser,
-                  item_url: document._self,
-                  image_url: document.posterImage.reference,
+                  title: document.homepageHead !== "undefined" && document.homepageHead !== "null" ? document.homepageHead : '',
+                  subtitle: document.homepageTeaser !== "undefined" ? document.homepageTeaser : '',
+                  item_url: document._self !== "undefined" ? document._self : '',
+                  image_url: document.posterImage ? document.posterImage.reference : document.mainImage ? document.mainImage.reference : '',
                 };
               })
             }
@@ -290,7 +290,10 @@ async function receivedMessage(event) {
           .then(json => {
             return generateMessageData(json.documents, senderID);
           })
-          .then(messageData => callSendAPI(messageData))
+          .then(messageData => {
+              sendLoadingMessage(senderID)
+              callSendAPI(messageData)
+            })
           .catch((error, recipientId) => {
             console.log(error);
             const errorMessage = {
@@ -299,6 +302,7 @@ async function receivedMessage(event) {
             };
             callSendAPI(errorMessage);
           });
+          break;
       case "LATEST_SCORCHERS_PAYLOAD":
         fetch(
           `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=5&includeFuture=true&topics=sport/perth-scorchers`
@@ -307,7 +311,10 @@ async function receivedMessage(event) {
           .then(json => {
             return generateMessageData(json.documents, senderID);
           })
-          .then(messageData => callSendAPI(messageData))
+          .then(messageData => {
+            sendLoadingMessage(senderID)
+            callSendAPI(messageData)
+          })
           .catch((error, recipientId) => {
             console.log(error);
             const errorMessage = {
@@ -316,6 +323,7 @@ async function receivedMessage(event) {
             };
             callSendAPI(errorMessage);
           });
+          break;
       case "LATEST_BBL_PAYLOAD":
         fetch(
           `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=5&includeFuture=true&topics=sport/big-bash-league`
@@ -324,7 +332,10 @@ async function receivedMessage(event) {
           .then(json => {
             return generateMessageData(json.documents, senderID);
           })
-          .then(messageData => callSendAPI(messageData))
+          .then(messageData => {
+            sendLoadingMessage(senderID)
+            callSendAPI(messageData)
+          })
           .catch((error, recipientId) => {
             console.log(error);
             const errorMessage = {
@@ -333,6 +344,7 @@ async function receivedMessage(event) {
             };
             callSendAPI(errorMessage);
           });
+          break;
       case "LATEST_WOMENS_PAYLOAD":
         fetch(
           `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=5&includeFuture=true&topics=sport/womens-cricket`
@@ -341,7 +353,10 @@ async function receivedMessage(event) {
           .then(json => {
             return generateMessageData(json.documents, senderID);
           })
-          .then(messageData => callSendAPI(messageData))
+          .then(messageData => {
+            sendLoadingMessage(senderID)
+            callSendAPI(messageData)
+          })
           .catch((error, recipientId) => {
             console.log(error);
             const errorMessage = {
@@ -350,6 +365,7 @@ async function receivedMessage(event) {
             };
             callSendAPI(errorMessage);
           });
+          break;
       case "LATEST_AUST_PAYLOAD":
         fetch(
           `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=5&includeFuture=true&topics=sport/australian-cricket-team`
@@ -358,7 +374,10 @@ async function receivedMessage(event) {
           .then(json => {
             return generateMessageData(json.documents, senderID);
           })
-          .then(messageData => callSendAPI(messageData))
+          .then(messageData => {
+            sendLoadingMessage(senderID)
+            callSendAPI(messageData)
+          })
           .catch((error, recipientId) => {
             console.log(error);
             const errorMessage = {
@@ -367,6 +386,7 @@ async function receivedMessage(event) {
             };
             callSendAPI(errorMessage);
           });
+          break;
       case "LATEST_ASHES_PAYLOAD":
         fetch(
           `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=5&includeFuture=true&topics=sport/the-ashes`
@@ -375,7 +395,10 @@ async function receivedMessage(event) {
           .then(json => {
             return generateMessageData(json.documents, senderID);
           })
-          .then(messageData => callSendAPI(messageData))
+          .then(messageData => {
+            sendLoadingMessage(senderID)
+            callSendAPI(messageData)
+          })
           .catch((error, recipientId) => {
             console.log(error);
             const errorMessage = {
@@ -384,6 +407,7 @@ async function receivedMessage(event) {
             };
             callSendAPI(errorMessage);
           });
+          break;
       case "LATEST_IPL_PAYLOAD":
         fetch(
           `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=5&includeFuture=true&topics=sport/indian-premier-league`
@@ -392,7 +416,10 @@ async function receivedMessage(event) {
           .then(json => {
             return generateMessageData(json.documents, senderID);
           })
-          .then(messageData => callSendAPI(messageData))
+          .then(messageData => {
+            sendLoadingMessage(senderID)
+            callSendAPI(messageData)
+          })
           .catch((error, recipientId) => {
             console.log(error);
             const errorMessage = {
@@ -401,6 +428,7 @@ async function receivedMessage(event) {
             };
             callSendAPI(errorMessage);
           });
+          break;
       case "LATEST_WORLD_PAYLOAD":
         fetch(
           `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=5&includeFuture=true&topics=sport/cricket-world-cup`
@@ -409,7 +437,10 @@ async function receivedMessage(event) {
           .then(json => {
             return generateMessageData(json.documents, senderID);
           })
-          .then(messageData => callSendAPI(messageData))
+          .then(messageData => {
+            sendLoadingMessage(senderID)
+            callSendAPI(messageData)
+          })
           .catch((error, recipientId) => {
             console.log(error);
             const errorMessage = {
@@ -418,6 +449,7 @@ async function receivedMessage(event) {
             };
             callSendAPI(errorMessage);
           });
+          break;
     }
 
     return;
@@ -426,22 +458,24 @@ async function receivedMessage(event) {
   sendReadReceipt(senderID);
 
   if (messageText) {
-    const regex = /^tell me more about (.*)/g;
-    const regex2 = /^(.*)latest(.*)/g;
 
-    if (messageText.match(regex)) {
-      const sendBack = regex.exec(messageText);
+    const downCaseMessage = messageText.replace(/[^\w\s]/gi, '').trim().toLowerCase()
+    const regex = /^tell me more about (.*)/g;
+    const latestRegex = /^(.*)latest(.*)/g;
+    const nextMatchRegex = /^(.*)next match(.*)/g;
+
+    if (downCaseMessage.match(regex)) {
+      const sendBack = regex.exec(downCaseMessage);
 
       sendPlayerMessage(senderID, sendBack[1]);
     }
-    if (messageText.match(regex2)) {
-      // sendHiMessage(event.recipient.id)
+    if (downCaseMessage.match(latestRegex)) {
       var messageData = {
         recipient: {
           id: senderID
         },
         message: {
-          text: "Title?",
+          text: "Select a Topic",
           quick_replies: [
             {
               content_type: "text",
@@ -488,7 +522,56 @@ async function receivedMessage(event) {
       };
 
       callSendAPI(messageData);
+
     }
+
+    if (downCaseMessage.match(nextMatchRegex)) {
+      var messageData = {
+        "recipient":{
+          "id": senderID
+        },
+        "message": {
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "list",
+              "top_element_style": "LARGE",
+              "elements": [
+                {
+                  "title": "Cricket",
+                  "image_url": "https://images.thewest.com.au/publication/B881022500Z/1542262499128_GDO1U9KIB.1-2.jpg?imwidth=1024",
+                },
+                {
+                  "title": 'Gillette T20s v India, First T20',
+                  "subtitle": `Wednesday 21 Nov 2018 5:50 PM. The Gabba, Brisbane`,
+                  "image_url": "https://images.thewest.com.au/publication/B881022500Z/1542262499128_GDO1U9KIB.1-2.jpg?imwidth=1024"
+                },
+                {
+                  "title": 'Gillette T20s v India, Second T20',
+                  "subtitle": `23 Nov 2018 @ 6:50 PM. MCG, Melbourne`,
+                },
+                {
+                  "title": 'Gillette T20s v India, Third T20',
+                  "subtitle": `25 Nov 2018 6:50 PM. SCG, Sydney`,
+                }
+
+              ],
+              "buttons": [
+                {
+                  "title": "More on The West",
+                  "type": "web_url",
+                  "url": "https://thewest.com.au/sport/cricket/which-cricket-matches-are-on-seven-this-summer-complete-free-to-air-tv-guide-for-big-bash-league-and-internationals-ng-b881022500z"
+                }
+              ]
+            }
+          }
+        }
+      };
+
+      callSendAPI(messageData);
+    }
+
+
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
   }
