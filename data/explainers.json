@@ -1,0 +1,785 @@
+[
+  {
+    "term": "All out",
+    "definition": "An innings is ended due to ten of the eleven batsmen on the batting side being either dismissed or unable to bat because of injury or illness."
+  },
+  {
+    "term": "All-rounder",
+    "definition": "A player adept at both batting and bowling. In the modern era, this term can also refer to a wicket-keeper adept at batting. For example, Mitchell Johnson or Shane Warne."
+  },
+  {
+    "term": "Anchor",
+    "definition": "Top-order batsman capable of batting for a long duration throughout the innings. Usually batsman playing at numbers 3 or 4 play such a role, especially if there is a batting collapse. An anchor plays defensively, and is often the top scorer in the innings."
+  },
+  {
+    "term": "Appeal",
+    "definition": "The act of a bowler or fielder shouting at the umpire to ask if his last ball took the batsman's wicket. Usually phrased in the form of howzaaaaat (how-is-that?).  Or simply turning to the umpire and shouting."
+  },
+  {
+    "term": "Approach",
+    "definition": "The motion of the bowler prior to bowling the ball. It is also known as the run-up. Also the ground a bowler runs on during his run up."
+  },
+  {
+    "term": "Arm-ball",
+    "definition": "A deceptive delivery bowled by an off spin bowler that is not spun, so, unlike the off break, it travels straight on (with the bowler's arm)."
+  },
+  {
+    "term": "Around the wicket or round the wicket",
+    "definition": "A right-handed bowler passing to the right of the stumps during his bowling action, and vice-versa for left-handed bowlers."
+  },
+  {
+    "term": "The Ashes",
+    "definition": "A test mach series in which Australia is more successful than England. The prize is a small wooden urn that contains ashes collected after burning the bails used when Australia first beat England in England, at The Oval in 1882 (the first Test match between the two nations was in Melbourne in 1877)."
+  },
+  {
+    "term": "Asking rate",
+    "definition": "The rate at which the team batting needs to score to catch the opponents score in a limited overs game."
+  },
+  {
+    "term": "Attacking shot",
+    "definition": "A shot of aggression or strength designed to score runs."
+  },
+  {
+    "term": "Average",
+    "definition": "A bowler's bowling average is defined as the total number of runs conceded by the bowler (including wides and no-balls) divided by the number of wickets taken by the bowler. A batsman's batting average is defined as the total number of runs scored by the batsman divided by the number of times he has been dismissed."
+  },
+  {
+    "term": "Back foot",
+    "definition": "The batsman's foot nearest to the stump. For bowlers, it's the foot to leave the ground when the ball is delivered."
+  },
+  {
+    "term": "Back foot contact",
+    "definition": "The position of the bowler at the moment when his back foot lands on the ground just prior to delivering the ball."
+  },
+  {
+    "term": "Back foot shot",
+    "definition": "A shot played with the batsman's weight on his back foot (i.e. the foot furthest from the bowler)."
+  },
+  {
+    "term": "Back spin(also under-spin)",
+    "definition": "a delivery which has a rotation backwards so that after pitching it immediately slows down, or bounces lower and skids on to the batsman."
+  },
+  {
+    "term": "Backing up",
+    "definition": "1. The non-striking batsman leaving his crease during the delivery in order to shorten the distance to complete one run. A batsman \"backing up\" too far runs the risk of being run out, either by a fielder in a conventional run out, or - in a \"Mankad\" - by the bowler themself."
+  },
+  {
+    "definition": "2. After a fielder chases the ball, another fielder placed at a further distance also moves into position so that if the fielder mis-fields the ball, the damage done is minimal. Also done to support a fielder receiving a throw from the outfield in case the throw is errant or not caught."
+  },
+  {
+    "term": "Backlift",
+    "definition": "Lifting the bat to hit the ball."
+  },
+  {
+    "term": "Bail",
+    "definition": "The two small pieces of wood resting on top of the stumps."
+  },
+  {
+    "term": "Ball",
+    "definition": "It's the round object the players throw. Also a delivery by a bowler."
+  },
+  {
+    "term": "Bang in",
+    "definition": "To bowl a delivery on a shorter length with additional speed and force."
+  },
+  {
+    "term": "Bat",
+    "definition": "A wooden instrument used to hit the ball. Also a mammal with wings."
+  },
+  {
+    "term": "Bat-pad",
+    "definition": "Fielder who is in position close to the batsman to catch the ball if it hits the bat, then the pad, and rises to a catchable height. Also a defense against being given out lbw, that the ball may have hit the bat first, however indiscernible."
+  },
+  {
+    "term": "Batsman/batter",
+    "definition": "A player on the batting side, or a player whose speciality is batting."
+  },
+  {
+    "term": "Batting",
+    "definition": "The act of scoring runs, defending a wicket and moving the bat to hit the ball."
+  },
+  {
+    "term": "Batting average",
+    "definition": "Average number of runs scored per innings by a batsman, calculated by dividing the batsman's total runs scored during those innings in question by the number of times the batsman was out. Compare innings average."
+  },
+  {
+    "term": "Batting end",
+    "definition": "End of the pitch where the striker stands."
+  },
+  {
+    "term": "Batting order",
+    "definition": "The order in which the batsmen bat, from the openers, through the top order and middle order to the lower order."
+  },
+  {
+    "term": "Beach cricket",
+    "definition": "An informal form of the game, obviously cricket played on beaches. Best played with friends, food and drinks."
+  },
+  {
+    "term": "Beamer",
+    "definition": "A delivery that reaches the batsman at around head height without bouncing. Due to the risk of injury to the batsman, a beamer is an illegal delivery, punishable by a no ball being called."
+  },
+  {
+    "term": "Beehive",
+    "definition": "A diagram showing where a number of balls, usually from a particular bowler, have passed the batsman. Compare pitch map."
+  },
+  {
+    "term": "Belter",
+    "definition": "A belter of a pitch is a pitch offering advantage to the batsman."
+  },
+  {
+    "term": "Bite",
+    "definition": "The turn a spin bowler is able to produce on the pitch."
+  },
+  {
+    "term": "Block",
+    "definition": "A defensive shot."
+  },
+  {
+    "term": "Block hole",
+    "definition": "The area between where the batsman rests his bat to receive a delivery and his toes. It is the target area for a yorker."
+  },
+  {
+    "term": "Bodyline",
+    "definition": "A an illegal tactic involving bowling directly at the batsman's body, particularly with close fielders packed on the leg side. Can be called the \"fast leg theory\" in other contexts"
+  },
+  {
+    "term": "Ball tampering",
+    "definition": "The illegal action of changing the condition of the ball by artificial means, usually scuffing the surface, picking or lifting the seam of the ball, or applying substances other than sweat or saliva. It brings great dishonour on your country/side if you ball tamper, like Cam Bancroft."
+  },
+  {
+    "term": "Blob",
+    "definition": "A score of zero. Also a duck."
+  },
+  {
+    "term": "Bouncer",
+    "definition": "A short-pitched ball which passes the batsman at chest or head height."
+  },
+  {
+    "term": "Bosie",
+    "definition": "An Aussie term for a Googly. See Googly."
+  },
+  {
+    "term": "Boundary",
+    "definition": "The perimeter of a cricket field, or the act of the batsman scoring a four or a six."
+  },
+  {
+    "term": "Box",
+    "definition": "An crotch protector worn by batsmen and wicketkeepers."
+  },
+  {
+    "term": "Bump ball",
+    "definition": "A ball which is played off the bat almost instantly into the ground and is caught by a fielder. Often this has the appearance of being a clean catch"
+  },
+  {
+    "term": "Bumper",
+    "definition": "See bouncer"
+  },
+  {
+    "term": "Bunny",
+    "definition": "Or rabbit. A member of the side who cannot bat and is selected as a specialist bowler or wicketkeeper, and who almost always bats at No. 11. Also a fluffy, cute animal."
+  },
+  {
+    "term": "Bunsen",
+    "definition": "A term used by commentators to describe a pitch heavily favouring slow bowlers. From Cockney rhyming slang (Bunsen Burner = turner)."
+  },
+  {
+    "term": "Bye",
+    "definition": "A run scored when the batsman does not touch the ball with either his bat or body. First recorded in the 1770s."
+  },
+  {
+    "term": "Carry your bat",
+    "definition": "An opening batsman who remains not out at the end of a completed innings (ie when all his team-mates are out)"
+  },
+  {
+    "term": "Charge (giving the)",
+    "definition": "When a batsman leaves his crease to attack the ball, usually against a slow bowler. By doing this he can convert a good-length ball into a half-volley"
+  },
+  {
+    "term": "Chest-on",
+    "definition": "Used to describe a bowler who delivers the ball with his chest facing the batsman, as opposed to being side on"
+  },
+  {
+    "term": "Chinaman",
+    "definition": "Named after Puss Achong. A ball bowled by a left-arm slow bowler that turns into the right-hand batsman, in effect a left-arm legspinner."
+  },
+  {
+    "term": "Chin music",
+    "definition": "Fast bowlers aiming the ball at the batsman's head. The term originated in the Caribbean"
+  },
+  {
+    "term": "Chucker",
+    "definition": "Bowlers who throw the ball using the incorrect action. A bowler cannot straighten their arm during the bowling actions. Chuckers do."
+  },
+  {
+    "term": "Closing the face",
+    "definition": "Turning the face of the bat inwards and, in doing so, hitting the ball to the leg side"
+  },
+  {
+    "term": "Corridor of uncertainty",
+    "definition": "A term commentators love, describing an area just outside the batsman's off stump where he is unsure whether he has to leave or play the ball"
+  },
+  {
+    "term": "Cow corner",
+    "definition": "An unconventional fielding position, more commonly found in the lower reaches of the game, on the midwicket/long-on boundary."
+  },
+  {
+    "term": "Cricket Max",
+    "definition": "A shortened version of the game with unconventional scoring systems pioneered by Martin Crowe in New Zealand in the late 1990s."
+  },
+  {
+    "term": "Cross bat",
+    "definition": "A shot where the batsman holds his bat horizontally when striking the ball. Examples of cross-batted shots include hooks, pulls and cuts."
+  },
+  {
+    "term": "Dead ball",
+    "definition": "A ball from which no runs can be scored or wickets taken. First referred to in 1798"
+  },
+  {
+    "term": "Declaration",
+    "definition": "When the batting side ends their innings before all of their players are out. A team can declare their innings."
+  },
+  {
+    "term": "Dibbly-dobbly bowlers",
+    "definition": "Bowlers who are of medium pace, and are effective in the one-day scenario in choking the runs. New Zealand had a famous quartet - Rod Latham, Gavin Larsen, Chris Harris and Nathan Astle - during the 1992 World Cup"
+  },
+  {
+    "term": "Dolly",
+    "definition": "An easy catch."
+  },
+  {
+    "term": "Doosra",
+    "definition": "A Hindi word. It's the offspinner's version of a Googly, delivered out of the back of the hand and turning away from the right-hand batsman"
+  },
+  {
+    "term": "Drifter/floater",
+    "definition": "A delivery bowled by an offspinner which curves away from a right-hander, and then carries straight on instead of turning"
+  },
+  {
+    "term": "Duck",
+    "definition": "Getting out on zero runs. Also a blob."
+  },
+  {
+    "term": "Duckworth Lewis",
+    "definition": "Named after Frank Duckworth and Tony Lewis, two mathematicians who devised a system to help decide one-day cricket matches when rain interrupts play."
+  },
+  {
+    "term": "Economy rate",
+    "definition": "The average number of runs a bowler concedes per over"
+  },
+  {
+    "term": "Extras",
+    "definition": "Runs not scored by batsmen. There are four common extras - byes, leg byes, wides and no-balls. In Australia these are known as sundries"
+  },
+  {
+    "term": "Featherbed",
+    "definition": "A batsmen-friendly pitch with little life for the bowlers. Often found in Antigua"
+  },
+  {
+    "term": "Flipper",
+    "definition": "A variation for the legspinner that appears to be pitching short but the ball skids on quickly and often results in bowled or lbw. It is a delivery that is used sparingly"
+  },
+  {
+    "term": "Full toss",
+    "definition": "A ball that reaches the batsmen without bouncing. Above waist height it becomes a beamer."
+  },
+  {
+    "term": "Gardening",
+    "definition": "The act of the batsman repairing indentations in the pitch, made by the ball or studs, with his bat. More likely to happen when a ball has just whistled past his nose or scooted by his ankle"
+  },
+  {
+    "term": "Good length",
+    "definition": "The ideal length that the bowler aims for, getting the batsman in two minds as whether to play forwards or back."
+  },
+  {
+    "term": "Googly",
+    "definition": "The legspinner's variation that turns into the right-hander and away from the left-hander."
+  },
+  {
+    "term": "Grubber",
+    "definition": "A ball that hardly bounces. See shooter."
+  },
+  {
+    "term": "Half volley",
+    "definition": "A ball that is the perfect length for driving, fuller than a good length but not a full-toss."
+  },
+  {
+    "term": "Handled the ball",
+    "definition": "If the batsmen deliberately touches the ball with his hands he can be given out. Michael Vaughan fell victim to this in India on 2002-03 tour in Bangalore."
+  },
+  {
+    "term": "Hawk-Eye",
+    "definition": "A tracking technology that helps to explain the intricacies of the sport, Hawk-Eye can be helpful in judging LBWs. At the moment it is used mainly for arm-chair umpiring, although one day it may be used in an official capacity."
+  },
+  {
+    "term": "Heavy ball",
+    "definition": "When a delivery is quicker than it looks and hits the bat harder or higher than is expected."
+  },
+  {
+    "term": "Hit the ball twice",
+    "definition": "If a batsmen deliberately strikes the ball twice to gain runs he can be given out. However, the batsman can knock the ball away from his stumps with the bat."
+  },
+  {
+    "term": "Hit the deck",
+    "definition": "The bowler's ability to deliver the ball from height and extract extra bounce from the pitch."
+  },
+  {
+    "term": "Hoick",
+    "definition": "Same as slog, but most used for on-side shots."
+  },
+  {
+    "term": "In-ducker",
+    "definition": "An inswinging delivery that moves into the batsman very late. Wasim Akram produced deadly versions with the older ball."
+  },
+  {
+    "term": "Inside out, turning the batsman",
+    "definition": "A batsman aims to leg but the ball goes past the off and he is forced to play the ball open-chested."
+  },
+  {
+    "term": "Inside-out shot",
+    "definition": "A stroke where the batsman moves towards the leg side and hits a ball around leg stump into the off side."
+  },
+  {
+    "term": "Jaffa",
+    "definition": "A delivery that is too good for the batsman, and leaves him groping hopelessly at thin air or (as the bowler will hope) dismisses him."
+  },
+  {
+    "term": "King pair",
+    "definition": "Hardly worth turning up if you get one of these: out first ball for zero in both innings."
+  },
+  {
+    "term": "Kolpak",
+    "definition": "An EU ruling which has led to English county cricket being flooded with players ineligible for England but not classified as overseas players."
+  },
+  {
+    "term": "Leading edge",
+    "definition": "When the batsman mis-hits the ball and edges it forward in the opposite direction to which he was attempting to play."
+  },
+  {
+    "term": "Leg-before wicket",
+    "definition": "One of the game's more complex rules, but here's our attempt at an explanation:  You cannot be out if the ball pitched outside the line of leg stump; you cannot be out if the ball hits you outside the line of off stump unless you are offering no stroke. Aside from that, if it hits you in line, the only decision the umpire has to make is whether the ball is going on to hit the stumps."
+  },
+  {
+    "term": "Leg-bye",
+    "definition": "When the ball deflects off the pad and the batsmen run. A shot must be offered to the ball. Leg-byes do not count against the bowler"
+  },
+  {
+    "term": "Leg-break/spin",
+    "definition": "When the ball pitches and turns from leg to off for a right-hander."
+  },
+  {
+    "term": "Leg-cutter",
+    "definition": "A ball which cuts and moves away from the batsman towards the offside (if he is a righthander)."
+  },
+  {
+    "term": "Leg-side",
+    "definition": "The area of the pitch behind the batsman's legs"
+  },
+  {
+    "term": "Leg theory",
+    "definition": "Refer to bodyline."
+  },
+  {
+    "term": "Length",
+    "definition": "Where the ball pitches down the wicket. Lengths can be generally short, full or good."
+  },
+  {
+    "term": "Lifter",
+    "definition": "A ball that rises unexpectedly."
+  },
+  {
+    "term": "Line",
+    "definition": "The line of attack the bowler employs when he is bowling."
+  },
+  {
+    "term": "Lollipop",
+    "definition": "A really easy ball to hit - a 'gift'."
+  },
+  {
+    "term": "Long hop",
+    "definition": "A ball which pitches short, sits up and 'begs' to be hit"
+  },
+  {
+    "term": "Loop",
+    "definition": "The flight of the ball."
+  },
+  {
+    "term": "Maiden",
+    "definition": "An over where no one scores any runs (byes or leg-byes may be scored in this over, though, as these don't count against the bowler)"
+  },
+  {
+    "term": "Manhattan",
+    "definition": "A bar graph of runs scored per over which resembles the Manhattan skyscrapers skyline"
+  },
+  {
+    "term": "Mankad",
+    "definition": "Mainly an indoor cricket term. When the bowler brings his arm round and, instead of releasing the ball, runs out the non-striker by whipping off the bails. This type of dismissal is rare - and usually a warning is given to the batsman beforehand. Named after Vinoo Mankad, who twice dismissed the Australian Bill Brown this way"
+  },
+  {
+    "term": "MCC",
+    "definition": "The Marylebone Cricket Club, the spiritual home of cricket at Lord's in St Johns Wood in London. For the greater period of cricket's formal history, the MCC which was founded in 1787, was the autocratic arbiter in cricket matters. No law could be changed without its approval."
+  },
+  {
+    "term": "Middle",
+    "definition": "To hit the ball from the meat of the bat, \"to middle it\" is to connect really well. Middle is also the centre of the field, where the bulk of the action takes place."
+  },
+  {
+    "term": "Military Medium",
+    "definition": "This can be a bit of a sledge or a derogatory term. It's a bowler who has no real pace."
+  },
+  {
+    "term": "Minefield",
+    "definition": "A difficult batting track. The pitch is in such a state of disrepair that it is almost impossible to play \"proper\" shots as the ball is popping up everywhere"
+  },
+  {
+    "term": "Nelson",
+    "definition": "The English superstition that 111 and its multiples are unlucky. The sticks resemble 111, and is loosely connected with Lord Nelson's physical attributes. Double Nelson is 222."
+  },
+  {
+    "term": "Nervous nineties",
+    "definition": "The psychological pressure on the batsman knowing he is approaching a century."
+  },
+  {
+    "term": "Net Run Rate",
+    "definition": "A system for separating sides who finish on level points in multi-team tournaments."
+  },
+  {
+    "term": "New ball",
+    "definition": "Can usually be taken every 80 overs. The advantage is to quick bowlers who have a shiny and bouncy ball, but conversely it can result in an increase in scoring rate as the ball comes off the bat faster"
+  },
+  {
+    "term": "Nick",
+    "definition": "A faint edge off the bat."
+  },
+  {
+    "term": "Nightwatchmen",
+    "definition": "A non-batsman promoted up the order towards the end of a day's play with the idea of shielding a recognised batsman in the final overs."
+  },
+  {
+    "term": "No-ball",
+    "definition": "An illegitimate delivery, usually when the bowler has overstepped on the front crease."
+  },
+  {
+    "term": "Nurdle",
+    "definition": "The batsman nudging the ball around and into gaps."
+  },
+  {
+    "term": "Obstruction",
+    "definition": "When the batsman wilfully blocks or distracts a fielder to prevent a catch being made or a run-out being effected."
+  },
+  {
+    "term": "Occupy the crease",
+    "definition": "When a batsman stays at the wicket but scores slowly, often with the intention of playing out for a draw."
+  },
+  {
+    "term": "Off-break/spin",
+    "definition": "A ball turning into the right hander- from off to leg (from left to right)."
+  },
+  {
+    "term": "Off-cutter",
+    "definition": "An offbreak delivered at speed."
+  },
+  {
+    "term": "Off the mark",
+    "definition": "When the batsman scores his first run."
+  },
+  {
+    "term": "Off-side",
+    "definition": "This has nothing to do with soccer (football). The side of the pitch which is to batsman's right (if right-handed), or left (if left-handed)"
+  },
+  {
+    "term": "On-side",
+    "definition": "The same as the leg-side."
+  },
+  {
+    "term": "On the up",
+    "definition": "Making contact with the ball before it reaches the top of the bounce - hitting it on the rise. Viv Richards was a prominent exponent."
+  },
+  {
+    "term": "Out",
+    "definition": "There are ten ways you can get out: Bowled, caught, hit wicket, LBW, stumped, timed out, handled the ball, obstruction, hit the ball twice, and run out. To be out \"retired out\" counts as a dismissal, unlike \"retired hurt\"."
+  },
+  {
+    "term": "Outside edge",
+    "definition": "When the ball hits the edge of the bat which is furthest away from his body."
+  },
+  {
+    "term": "Outswing",
+    "definition": "When the ball swings away from the batsman and towards the slips."
+  },
+  {
+    "term": "Paddle",
+    "definition": "A sweep shot."
+  },
+  {
+    "term": "Pair",
+    "definition": "When a batter gets a duck in both innings."
+  },
+  {
+    "term": "Pinch-hitters",
+    "definition": "Lower-order batsmen promoted in the line-up to try and hit up a few quick runs. Used mostly when a team is chasing a huge total in a one-dayer - the thinking being that a few quick runs will reduce the asking rate; and if the pinch-hitter gets out, the specialist batsmen are still around"
+  },
+  {
+    "term": "Pitch",
+    "definition": "The bounce of the ball - \"it pitches on a good length\". Also, the cut strip in the centre of the field of play."
+  },
+  {
+    "term": "Play on",
+    "definition": "When a batsman hits the ball but it goes on to hit the stumps and he is bowled."
+  },
+  {
+    "term": "Plumb",
+    "definition": "When the batsman is clearly LBW, even at full speed, he is said to be plumb in front."
+  },
+  {
+    "term": "Powerplay",
+    "definition": "The ICC introduced the powerplay in 2005 to try to spruce up the middle overs of one-day internationals by enforcing the bowling side to take three blocks of overs in which they have to have extra fielders within the 30-yard circle. The first Powerplay is mandatory through the first ten overs of the innings, the second and third ones, of five overs each, can be taken at any other time. In rain-reduced matches the duration of the second and third Powerplays is reduced in proportion to the overall reduction."
+  },
+  {
+    "term": "Pudding",
+    "definition": "A slow, stodgy pitch which will be difficult to score quickly on."
+  },
+  {
+    "term": "Pull",
+    "definition": "A back-foot leg-side shot, distinct from the hook because the pull is played to a ball that hasn't risen as high."
+  },
+  {
+    "term": "Rabbit",
+    "definition": "See bunny."
+  },
+  {
+    "term": "Return crase",
+    "definition": "Parallel white lines pointing down the pitch, either side of the stumps. A bowler's back foot must land inside this area or else a no-ball will be called."
+  },
+  {
+    "term": "Retire",
+    "definition": "To postpone or end one's innings, either voluntarily through boredom when you're simply too good for the opposition, or involuntarily, potentially in a lot of pain, when a nasty fast bowler gets what he or she came for: your blood."
+  },
+  {
+    "term": "Reverse sweep",
+    "definition": "This stroke is played by dropping to one knee and reversing one's hands, so that you can swing the ball from leg to off, rather than the more natural off to leg."
+  },
+  {
+    "term": "Reverse swing",
+    "definition": "Involves sideways movement of the ball through the air that is contrary to your average everyday laws of physics. If it sounds like rocket science, that is because it is."
+  },
+  {
+    "term": "Rip",
+    "definition": "Big turn for a spin bowler, especially a legspinner, who can use the whole action of the wrist to impart maximum revolutions on the ball. Shane Warne, consequently, bowls a lot of \"rippers\"."
+  },
+  {
+    "term": "Ring Field",
+    "definition": "A standard fielding arrangement, with men positioned in a circle all around the bat saving the single"
+  },
+  {
+    "term": "Rock",
+    "definition": "Slang for cricket ball."
+  },
+  {
+    "term": "Roll",
+    "definition": "To flatten the playing surface with a heavy rolling device."
+  },
+  {
+    "term": "Roller",
+    "definition": "A heavy rolling device designed to flatten the surface of the pitch"
+  },
+  {
+    "term": "Rope",
+    "definition": "Used to mark the perimeter of the field. If the ball crosses or hits the rope, a boundarywill be signalled."
+  },
+  {
+    "term": "Rough",
+    "definition": "The area of a pitch that is scuffed up and loosened by the action of a bowler running through in his follow-through. Usually, this will be situated a foot or so outside leg stump."
+  },
+  {
+    "term": "Run chase",
+    "definition": "Generally the fourth innings of a first-class or Test match, and the latter stages of a one-day game, when the match situation has been reduced to a set figure for victory, in a set time or maximum number of overs"
+  },
+  {
+    "term": "Run-rate",
+    "definition": "Of particular importance in a one-day game, this is the average number of runs scored per over, and is used as a guide to a team's progress"
+  },
+  {
+    "term": "Run-up",
+    "definition": "The strides taken by a bowler as they steady themselves for delivery. Also the area in which they perform said action"
+  },
+  {
+    "term": "Runner",
+    "definition": "A player who is called upon by a batsman who might otherwise need to retire hurt. He is required to wear the same padding and stands at square leg or the non-striker's end to perform the duty of running between the wickets."
+  },
+  {
+    "term": "Sandshoe crusher",
+    "definition": "Slang for Yorker. a full-pitched delivery that is aimed at the batsman's toes and usually hits them aswell"
+  },
+  {
+    "term": "Seam",
+    "definition": "he ridge of stitching that holds the two halves of a ball together, and causes deviation off the pitch when the ball lands. Seam bowlers, as opposed to swing bowlers, rely on movement off the pitch, rather than through the air"
+  },
+  {
+    "term": "Shoulder arms",
+    "definition": "The description of when a batsman decides that rather than risk being dismissed from a ball he lifts the bat high above his shoulder to attempt to keep his bat and hands out of harm's way."
+  },
+  {
+    "term": "Shirtfront",
+    "definition": "A flat, lifeless wicket that bowlers hate, but batsmen love."
+  },
+  {
+    "term": "Shooter",
+    "definition": "See Grubber"
+  },
+  {
+    "term": "Sitter",
+    "definition": "The easiest, most innocuous and undroppable catch that a fielder can ever receive. You deserve the heckling you will get if you drop one of these. Replays on the big screen are welcome."
+  },
+  {
+    "term": "Sledging",
+    "definition": "The act of verbally abusing or unsettling a batsman, in an attempt to make him lose concentration and give his wicket away. The more offensive the better."
+  },
+  {
+    "term": "Slog",
+    "definition": "Used to describe a shot which is not in the coaching book"
+  },
+  {
+    "term": "Slogger",
+    "definition": "Exponent of the slog."
+  },
+  {
+    "term": "Slog-sweep",
+    "definition": "A heave to the leg side, played like the sweep, but a lofted shot"
+  },
+  {
+    "term": "Slow baller",
+    "definition": "The idea is to deliver a pace of significantly reduced pace, while at the same time turning your arm over at the same speed so as to deceive the batsman. This change of pace can be achieved by a change of grip, or a late tweak of the wrist. The best exponents - Courtney Walsh and Chris Cairns."
+  },
+  {
+    "term": "Standing back/standing up",
+    "definition": "Where a wicketkeeper positions himself for a particular bowler. He stands back for fast bowlers, and stands up for spinners."
+  },
+  {
+    "term": "Stock ball",
+    "definition": "A bowler's regular delivery, minimum risk, little chance of runs or wickets. Generally used to lull the batsman into a false sense of security."
+  },
+  {
+    "term": "Stonewall",
+    "definition": "To protect one's wicket at all costs, putting defence above all other virtues. Also a type of masonary construction."
+  },
+  {
+    "term": "Strike rate",
+    "definition": "The number of runs a batsman scores per 100 balls; the number of deliveries a bowler needs to take his wickets"
+  },
+  {
+    "term": "Sundries",
+    "definition": "Aussie word for extras."
+  },
+  {
+    "term": "Swing",
+    "definition": "A ball that curves through the air, as opposed to off the seam. See also, reverse swing."
+  },
+  {
+    "term": "Tailender",
+    "definition": "Players who come in towards the end of an innings, generally Nos. 8, 9, 10 and 11, who are not noted for their batting prowess. They can generally bowl pretty well though."
+  },
+  {
+    "term": "Teapot or double-teapot",
+    "definition": "Involves having both hands on hips at the same time, usually in reaction to a dropped catch, edged boundary or general misfield"
+  },
+  {
+    "term": "Throwing",
+    "definition": "A contentious topic. To deliver the ball with a arm that flexes at the elbow at point of delivery, thereby enabling extra spin to be imparted for a slow bowler, or extra pace for a quick bowler."
+  },
+  {
+    "term": "Ton",
+    "definition": "A century (100 runs) by one batter in a single innings."
+  },
+  {
+    "term": "Tonk",
+    "definition": "To give the ball a good wallop. Onomatopoeic word, describing the sound made when ball and bat make contact."
+  },
+  {
+    "term": "Track",
+    "definition": "The pitch"
+  },
+  {
+    "term": "Trundler",
+    "definition": "Slow, laborious type of bowler. See Military medium."
+  },
+  {
+    "term": "Twelfth man",
+    "definition": "A substitute fielder (and drinks waiter) for the chosen eleven. If called upon to play, they can be allowed to field, but they're generally useless at batting or bowling."
+  },
+  {
+    "term": "Two-paced",
+    "definition": "A wicket that is beginning to break up, usually after three or four days of a Test match, and so produces some deliveries that leap off a length, and others that sneak through at shin-height"
+  },
+  {
+    "term": "Uncovered pitches",
+    "definition": "Pitches that were left open to the elements for the duration of a match, and so developed a variety of characteristics."
+  },
+  {
+    "term": "V, in the",
+    "definition": "he arc between mid-off and mid-on in which batsmen who play straight (in accordance with the MCC Coaching Manual) tend to score the majority of their runs."
+  },
+  {
+    "term": "Wagon wheel",
+    "definition": "A circular graph or line-drawing depicting the region in which a batsman has scored his runs"
+  },
+  {
+    "term": "Walk",
+    "definition": "The act of a batsman giving himself out, without waiting for an umpire's decision. Gilly famously walked off in the 2003 World Cup semi against Sri Lanka."
+  },
+  {
+    "term": "Wicket",
+    "definition": "The word can be used to describe the 22 yards between the stumps, the stumps collectively (bails included), the act of hitting these stumps and so dismissing the batsman, and perversely, the act of not being out"
+  },
+  {
+    "term": "Wide",
+    "definition": "A delivery that pitches too far away from the batsman and so proves impossible to score off. The umpire will single this by stretching his arms out horizontally, an extra will be added to the total and the ball will be bowled again"
+  },
+  {
+    "term": "Wrist spin",
+    "definition": "The version of spin bowling in which the revolutions on the ball are imparted via a flick of the wrist, rather than a tweak of the fingers."
+  },
+  {
+    "term": "Wrong'un",
+    "definition": "Australian term for a googly - a legspinner's delivery that turns in the opposite direction, ie from off to leg"
+  },
+  {
+    "term": "Yips",
+    "definition": "A mental affliction that affects many sportspeople. It's a mindblock that can cause a player to forget the basics of the game."
+  },
+  {
+    "term": "Yorker",
+    "definition": "A full-pitched delivery that is aimed at the batsman's toes and/or the base of the stumps."
+  },
+  {
+    "term": "Stumps",
+    "definition": "The three vertical posts that support the bails to form the wicket. An umpire can also call stumps, to signal play is over for the day."
+  },
+  {
+    "term": "Golden duck",
+    "definition": "Batter gets out for 0 on the first ball."
+  },
+  {
+    "term": "Platinum/diamond/royal duck",
+    "definition": "Opening batter gets out for 0 on the first ball of the innings."
+  },
+  {
+    "term": "Test cricket",
+    "definition": "It's the longest form of cricket, sometimes considered the highest/hardest form of cricket. It's played over two innings (per side). It's usually played over five days, with 90 overs bowled a day."
+  },
+  {
+    "term": "Over",
+    "definition": "Six balls"
+  },
+  {
+    "term": "Innings",
+    "definition": "Each of two or four divisions of a game during which one side has a turn at batting. Period which a team is active."
+  },
+  {
+    "term": "One Day Internationals (ODIs)",
+    "definition": "Played over one innings per side and completed in a day. Each side generally bowls 50 overs in an innings."
+  },
+  {
+    "term": "Twenty20 (T20)",
+    "definition": "A faster form of cricket in which each side bowls 20 overs. It was first introduced professionally in 2003."
+  }
+]

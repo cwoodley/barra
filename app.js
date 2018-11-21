@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /*
  * Copyright 2016-present, Facebook, Inc.
  * All rights reserved.
@@ -17,6 +18,10 @@ const bodyParser = require("body-parser"),
   https = require("https"),
   request = require("request"),
   fetch = require("node-fetch");
+
+  const {promisify} = require('util')
+  const fs = require('fs')
+  const readFileAsync = promisify(fs.readFile)
 
 var app = express();
 app.set("port", process.env.PORT || 5000);
@@ -458,16 +463,33 @@ async function receivedMessage(event) {
   sendReadReceipt(senderID);
 
   if (messageText) {
-
     const downCaseMessage = messageText.replace(/[^\w\s]/gi, '').trim().toLowerCase()
     const regex = /^tell me more about (.*)/g;
     const latestRegex = /^(.*)latest(.*)/g;
     const nextMatchRegex = /^(.*)next match(.*)/g;
 
-    if (downCaseMessage.match(regex)) {
-      const sendBack = regex.exec(downCaseMessage);
+    const playerInfo = [/^tell me more about (.*)/g, /^tell me about (.*)/g, /^who is (.*)/g]
+    const explainThis = [/^what is a (.*)/g, /^what does (.*) mean/g]
+    const regex2 = /^(.*)latest(.*)/g;
 
-      sendPlayerMessage(senderID, sendBack[1]);
+    playerInfo.forEach(expression => {
+      if (downCaseMessage.match(expression)) {
+        const searchFor = expression.exec(downCaseMessage)
+
+        sendPlayerMessage(senderID, searchFor[1])
+      }
+    })
+
+    explainThis.forEach(expression => {
+      if (downCaseMessage.match(expression)) {
+        const searchFor = expression.exec(downCaseMessage)
+
+        sendExplainerMessage(senderID, searchFor[1])
+      }
+    })
+
+    if (downCaseMessage === 'tell me a joke') {
+      sendJokeMessage(senderID)
     }
     if (downCaseMessage.match(latestRegex)) {
       var messageData = {
@@ -544,7 +566,6 @@ async function receivedMessage(event) {
                 {
                   "title": 'Gillette T20s v India, First T20',
                   "subtitle": `Wednesday 21 Nov 2018 5:50 PM. The Gabba, Brisbane`,
-                  "image_url": "https://images.thewest.com.au/publication/B881022500Z/1542262499128_GDO1U9KIB.1-2.jpg?imwidth=1024"
                 },
                 {
                   "title": 'Gillette T20s v India, Second T20',
@@ -735,60 +756,147 @@ function sendLoadingMessage(recipientId) {
 }
 
 function sendPlayerMessage(recipientId, player) {
-  sendLoadingMessage(recipientId);
 
-  fetch(
-    `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=100&includeFuture=true&idOrKeyword=${player}`
-  )
-    .then(res => res.json())
+  sendLoadingMessage(recipientId)
+  console.log('ok!')
 
-    .then(json => {
-      const publicationId = json.documents[0];
-      const publication = {
+  fetch(`https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=100&includeFuture=true&idOrKeyword=${player}`)
+  .then(res => res.json())
+
+  .then(json => {
+    const publicationId = json.documents[0]
+    const publication =
+      {
         title: publicationId.homepageHead,
         subtitle: publicationId.homepageTeaser,
         url: `https://thewest.com.au/${publicationId.slug}`
-      };
-      return publication;
-    })
-    .then(publication => {
-      const messageData = {
-        recipient: { id: recipientId },
-        message: {
-          attachment: {
-            type: "template",
-            payload: {
-              template_type: "open_graph",
+      }
+    return publication
+  })
+  .then(publication => {
+    const messageData = {
+      recipient: {id: recipientId},
+      message: {
+        attachment: {
+          type: 'template',
+          payload: {
+            template_type: 'open_graph',
 
-              elements: [
-                {
+            elements: [
+              {
+                url: publication.url,
+                buttons: [{
+                  type: 'web_url',
                   url: publication.url,
-                  buttons: [
-                    {
-                      type: "web_url",
-                      url: publication.url,
-                      title: "read more"
-                    }
-                  ]
-                }
-              ]
-            }
+                  title: 'read more',
+                }],
+              }
+            ]
           }
         }
-      };
+      }
+    }
 
-      return messageData;
-    })
-    .then(messageData => callSendAPI(messageData))
-    .catch((error, recipientId) => {
-      console.log(error);
-      const errorMessage = {
-        recipient: { id: recipientId },
-        sender_action: "typing_off"
-      };
+    return messageData
+  })
+  .then(messageData => callSendAPI(messageData))
+  .catch((error, recipientId) => {
+    console.log(error)
+    const errorMessage = {
+      recipient: {id:recipientId},
+      sender_action: 'typing_off'
+    }
 
-      callSendAPI(errorMessage);
-    });
+    callSendAPI(errorMessage)
+  })
+}
+
+function sendExplainerMessage(recipientId, explainer) {
+  sendLoadingMessage(recipientId)
+
+  readFileAsync(`${__dirname}/data/explainers.json`, {encoding: 'utf8'})
+  .then(contents => {
+    const obj = JSON.parse(contents)
+    return obj
+  })
+  .then(obj => {
+    const definition = getDefinition(obj, upperCase(explainer))
+    return definition
+  })
+  .then(definition => {
+    const messageData = {
+        recipient: {id:recipientId},
+        message: {
+          text: definition[0].definition
+        }
+      }
+
+      console.log(messageData)
+
+    return messageData
+  })
+  .then(messageData => {
+    console.log('sending message...')
+    callSendAPI(messageData)
+  })
+  .catch(error => {
+    console.log(error)
+  })
+}
+
+function sendJokeMessage(recipientId) {
+  sendLoadingMessage(recipientId)
+  const articleNumber = Math.floor(Math.random() * 9) + 1;
+
+  readFileAsync(`${__dirname}/data/jokes.json`, {encoding: 'utf8'})
+  .then(contents => {
+    const obj = JSON.parse(contents)
+    return obj
+  })
+  .then(definition => {
+    console.log('asking question number',articleNumber)
+    const messageData = {
+        recipient: {id:recipientId},
+        message: {
+          text: `${definition[articleNumber].question}
+
+${definition[articleNumber].answer} 😂
+
+
+
+
+--------------
+This awful joke is brought to you by TABTouch`
+        }
+      }
+
+      console.log(messageData)
+
+    return messageData
+  })
+  .then(messageData => {
+    console.log('sending message...')
+    callSendAPI(messageData)
+  })
+  .catch(error => {
+    console.log(error)
+  })
+}
+
+function upperCase(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function getDefinition(data, lookingFor) {
+  const definition = data.filter(
+    item => {
+      if (item.term === lookingFor) {
+        return item.definition
+      }
+    }
+  )
+
+  return definition
 }
 
 function sendRandomNewsMessage(recipientId) {
