@@ -777,8 +777,13 @@ function sendJokeMessage(recipientId) {
         message: {
           text: `${definition[articleNumber].question}
 
+${definition[articleNumber].answer} 😂
 
-${definition[articleNumber].answer}`
+
+
+
+--------------
+This awful joke is brought to you by TABTouch`
         }
       }
 
