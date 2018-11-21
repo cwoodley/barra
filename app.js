@@ -426,14 +426,26 @@ async function receivedMessage(event) {
   sendReadReceipt(senderID);
 
   if (messageText) {
-    const regex = /^tell me more about (.*)/g;
+    const playerInfo = [/^tell me more about (.*)/g, /^tell me about (.*)/g, /^who is (.*)/g]
+    const explainThis = [/^what is a (.*)/g, /^what does (.*) mean/g]
     const regex2 = /^(.*)latest(.*)/g;
 
-    if (messageText.match(regex)) {
-      const sendBack = regex.exec(messageText);
+    playerInfo.forEach(expression => {
+      if (messageText.match(expression)) {
+        const searchFor = expression.exec(messageText)
+        
+        sendPlayerMessage(senderID, searchFor[1])
+      }  
+    })
 
-      sendPlayerMessage(senderID, sendBack[1]);
-    }
+    explainThis.forEach(expression => {
+      if (messageText.match(expression)) {
+        const searchFor = expression.exec(messageText)
+        
+        sendExplainerMessage(senderID, searchFor[1])
+      } 
+    })
+
     if (messageText.match(regex2)) {
       // sendHiMessage(event.recipient.id)
       var messageData = {
@@ -652,60 +664,103 @@ function sendLoadingMessage(recipientId) {
 }
 
 function sendPlayerMessage(recipientId, player) {
-  sendLoadingMessage(recipientId);
 
-  fetch(
-    `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=100&includeFuture=true&idOrKeyword=${player}`
-  )
-    .then(res => res.json())
+  sendLoadingMessage(recipientId)
 
-    .then(json => {
-      const publicationId = json.documents[0];
-      const publication = {
+  fetch(`https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=100&includeFuture=true&idOrKeyword=${player}`)
+  .then(res => res.json())
+
+  .then(json => {
+    const publicationId = json.documents[0]
+    const publication = 
+      {
         title: publicationId.homepageHead,
         subtitle: publicationId.homepageTeaser,
         url: `https://thewest.com.au/${publicationId.slug}`
-      };
-      return publication;
-    })
-    .then(publication => {
-      const messageData = {
-        recipient: { id: recipientId },
-        message: {
-          attachment: {
-            type: "template",
-            payload: {
-              template_type: "open_graph",
+      }
+    return publication
+  })
+  .then(publication => {
+    const messageData = {
+      recipient: {id: recipientId},
+      message: {
+        attachment: {
+          type: 'template',
+          payload: {
+            template_type: 'open_graph',
 
-              elements: [
-                {
+            elements: [
+              {
+                url: publication.url,
+                buttons: [{
+                  type: 'web_url',
                   url: publication.url,
-                  buttons: [
-                    {
-                      type: "web_url",
-                      url: publication.url,
-                      title: "read more"
-                    }
-                  ]
-                }
-              ]
-            }
+                  title: 'read more',
+                }],
+              }
+            ]
           }
         }
-      };
+      }
+    }
+    
+    return messageData
+  })
+  .then(messageData => callSendAPI(messageData))
+  .catch((error, recipientId) => {
+    console.log(error)
+    const errorMessage = {
+      recipient: {id:recipientId},
+      sender_action: 'typing_off'
+    }
+  
+    callSendAPI(errorMessage)
+  })
+}
 
-      return messageData;
-    })
-    .then(messageData => callSendAPI(messageData))
-    .catch((error, recipientId) => {
-      console.log(error);
-      const errorMessage = {
-        recipient: { id: recipientId },
-        sender_action: "typing_off"
-      };
+function sendExplainerMessage(recipientId, explainer) {
+  sendLoadingMessage(recipientId)
 
-      callSendAPI(errorMessage);
-    });
+  readFileAsync(`${__dirname}/data/explainers.json`, {encoding: 'utf8'})
+  .then(contents => {
+    const obj = JSON.parse(contents)
+    return obj
+  })
+  .then(obj => {
+    const definition = getDefinition(obj, upperCase(explainer))
+    return definition
+  })
+  .then(definition => {
+    const messageData = {
+      recipient: {
+        id: recipientId
+      },
+
+        text: definition[0].definition
+      }
+
+    callSendAPI(messageData)
+    return
+  })
+  .catch(error => {
+    console.log(error)
+  })
+}
+
+function upperCase(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function getDefinition(data, lookingFor) {
+const definition = data.filter(
+  item => {
+    if (item.term === lookingFor) {
+      return item.definition
+    }
+  }
+)
+
+return definition
 }
 
 function sendRandomNewsMessage(recipientId) {
