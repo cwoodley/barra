@@ -451,6 +451,10 @@ async function receivedMessage(event) {
       } 
     })
 
+    if (messageText === 'tell me a joke') {
+      sendJokeMessage(senderID)
+    }
+
     if (messageText.match(regex2)) {
       // sendHiMessage(event.recipient.id)
       var messageData = {
@@ -741,6 +745,40 @@ function sendExplainerMessage(recipientId, explainer) {
         recipient: {id:recipientId},
         message: {
           text: definition[0].definition
+        }
+      }
+
+      console.log(messageData)
+
+    return messageData
+  })
+  .then(messageData => {
+    console.log('sending message...')
+    callSendAPI(messageData)
+  })
+  .catch(error => {
+    console.log(error)
+  })
+}
+
+function sendJokeMessage(recipientId) {
+  sendLoadingMessage(recipientId)
+  const articleNumber = Math.floor(Math.random() * 9) + 1;
+
+  readFileAsync(`${__dirname}/data/jokes.json`, {encoding: 'utf8'})
+  .then(contents => {
+    const obj = JSON.parse(contents)
+    return obj
+  })
+  .then(definition => {
+    console.log('asking question number',articleNumber)
+    const messageData = {
+        recipient: {id:recipientId},
+        message: {
+          text: `${definition[articleNumber].question}
+
+
+${definition[articleNumber].answer}`
         }
       }
 
