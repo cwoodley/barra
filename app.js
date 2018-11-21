@@ -8,22 +8,21 @@
  */
 
 /* jshint node: true, devel: true */
-'use strict';
+"use strict";
 
-const
-  bodyParser = require('body-parser'),
-  config = require('config'),
-  crypto = require('crypto'),
-  express = require('express'),
-  https = require('https'),
-  request = require('request'),
-  fetch = require('node-fetch');
+const bodyParser = require("body-parser"),
+  config = require("config"),
+  crypto = require("crypto"),
+  express = require("express"),
+  https = require("https"),
+  request = require("request"),
+  fetch = require("node-fetch");
 
 var app = express();
-app.set('port', process.env.PORT || 5000);
-app.set('view engine', 'ejs');
+app.set("port", process.env.PORT || 5000);
+app.set("view engine", "ejs");
 app.use(bodyParser.json({ verify: verifyRequestSignature }));
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 /*
  * Be sure to setup your config values before running this code. You can
@@ -32,25 +31,25 @@ app.use(express.static('public'));
  */
 
 // App Secret can be retrieved from the App Dashboard
-const APP_SECRET = (process.env.MESSENGER_APP_SECRET) ?
-  process.env.MESSENGER_APP_SECRET :
-  config.get('appSecret');
+const APP_SECRET = process.env.MESSENGER_APP_SECRET
+  ? process.env.MESSENGER_APP_SECRET
+  : config.get("appSecret");
 
 // Arbitrary value used to validate a webhook
-const VALIDATION_TOKEN = (process.env.MESSENGER_VALIDATION_TOKEN) ?
-  (process.env.MESSENGER_VALIDATION_TOKEN) :
-  config.get('validationToken');
+const VALIDATION_TOKEN = process.env.MESSENGER_VALIDATION_TOKEN
+  ? process.env.MESSENGER_VALIDATION_TOKEN
+  : config.get("validationToken");
 
 // Generate a page access token for your page from the App Dashboard
-const PAGE_ACCESS_TOKEN = (process.env.MESSENGER_PAGE_ACCESS_TOKEN) ?
-  (process.env.MESSENGER_PAGE_ACCESS_TOKEN) :
-  config.get('pageAccessToken');
+const PAGE_ACCESS_TOKEN = process.env.MESSENGER_PAGE_ACCESS_TOKEN
+  ? process.env.MESSENGER_PAGE_ACCESS_TOKEN
+  : config.get("pageAccessToken");
 
 // URL where the app is running (include protocol). Used to point to scripts and
 // assets located at this address.
-const SERVER_URL = (process.env.SERVER_URL) ?
-  (process.env.SERVER_URL) :
-  config.get('serverURL');
+const SERVER_URL = process.env.SERVER_URL
+  ? process.env.SERVER_URL
+  : config.get("serverURL");
 
 if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
   console.error("Missing config values");
@@ -62,17 +61,18 @@ if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
  * setup is the same token used here.
  *
  */
-app.get('/webhook', function(req, res) {
-  if (req.query['hub.mode'] === 'subscribe' &&
-      req.query['hub.verify_token'] === VALIDATION_TOKEN) {
+app.get("/webhook", function(req, res) {
+  if (
+    req.query["hub.mode"] === "subscribe" &&
+    req.query["hub.verify_token"] === VALIDATION_TOKEN
+  ) {
     console.log("Validating webhook");
-    res.status(200).send(req.query['hub.challenge']);
+    res.status(200).send(req.query["hub.challenge"]);
   } else {
     console.error("Failed validation. Make sure the validation tokens match.");
     res.sendStatus(403);
   }
 });
-
 
 /*
  * All callbacks for Messenger are POST-ed. They will be sent to the same
@@ -81,11 +81,11 @@ app.get('/webhook', function(req, res) {
  * https://developers.facebook.com/docs/messenger-platform/product-overview/setup#subscribe_app
  *
  */
-app.post('/webhook', function (req, res) {
+app.post("/webhook", function(req, res) {
   var data = req.body;
 
   // Make sure this is a page subscription
-  if (data.object == 'page') {
+  if (data.object == "page") {
     // Iterate over each entry
     // There may be multiple if batched
     data.entry.forEach(function(pageEntry) {
@@ -107,7 +107,10 @@ app.post('/webhook', function (req, res) {
         } else if (messagingEvent.account_linking) {
           receivedAccountLink(messagingEvent);
         } else {
-          console.log("Webhook received unknown messagingEvent: ", messagingEvent);
+          console.log(
+            "Webhook received unknown messagingEvent: ",
+            messagingEvent
+          );
         }
       });
     });
@@ -125,7 +128,7 @@ app.post('/webhook', function (req, res) {
  * (sendAccountLinking) is pointed to this URL.
  *
  */
-app.get('/authorize', function(req, res) {
+app.get("/authorize", function(req, res) {
   var accountLinkingToken = req.query.account_linking_token;
   var redirectURI = req.query.redirect_uri;
 
@@ -136,7 +139,7 @@ app.get('/authorize', function(req, res) {
   // Redirect users to this URI on successful login
   var redirectURISuccess = redirectURI + "&authorization_code=" + authCode;
 
-  res.render('authorize', {
+  res.render("authorize", {
     accountLinkingToken: accountLinkingToken,
     redirectURI: redirectURI,
     redirectURISuccess: redirectURISuccess
@@ -159,13 +162,14 @@ function verifyRequestSignature(req, res, buf) {
     // error.
     console.error("Couldn't validate the signature.");
   } else {
-    var elements = signature.split('=');
+    var elements = signature.split("=");
     var method = elements[0];
     var signatureHash = elements[1];
 
-    var expectedHash = crypto.createHmac('sha1', APP_SECRET)
-                        .update(buf)
-                        .digest('hex');
+    var expectedHash = crypto
+      .createHmac("sha1", APP_SECRET)
+      .update(buf)
+      .digest("hex");
 
     if (signatureHash != expectedHash) {
       throw new Error("Couldn't validate the request signature.");
@@ -193,9 +197,14 @@ function receivedAuthentication(event) {
   // plugin.
   var passThroughParam = event.optin.ref;
 
-  console.log("Received authentication for user %d and page %d with pass " +
-    "through param '%s' at %d", senderID, recipientID, passThroughParam,
-    timeOfAuth);
+  console.log(
+    "Received authentication for user %d and page %d with pass " +
+      "through param '%s' at %d",
+    senderID,
+    recipientID,
+    passThroughParam,
+    timeOfAuth
+  );
 
   // When an authentication is received, we'll send a message back to the sender
   // to let them know it was successful.
@@ -216,14 +225,18 @@ function receivedAuthentication(event) {
  * then we'll simply confirm that we've received the attachment.
  *
  */
-function receivedMessage(event) {
+async function receivedMessage(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
   var timeOfMessage = event.timestamp;
   var message = event.message;
 
-  console.log("Received message for user %d and page %d at %d with message:",
-    senderID, recipientID, timeOfMessage);
+  console.log(
+    "Received message for user %d and page %d at %d with message:",
+    senderID,
+    recipientID,
+    timeOfMessage
+  );
   console.log(JSON.stringify(message));
 
   var isEcho = message.is_echo;
@@ -238,36 +251,248 @@ function receivedMessage(event) {
 
   if (isEcho) {
     // Just logging message echoes to console
-    console.log("Received echo for message %s and app %d with metadata %s",
-      messageId, appId, metadata);
+    console.log(
+      "Received echo for message %s and app %d with metadata %s",
+      messageId,
+      appId,
+      metadata
+    );
     return;
   } else if (quickReply) {
-    var quickReplyPayload = quickReply.payload;
-    console.log("Quick reply for message %s with payload %s",
-      messageId, quickReplyPayload);
 
-    sendTextMessage(senderID, "Quick reply tapped");
+    function generateMessageData(documents, id) {
+      return {
+        recipient: { id },
+        message: {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: documents.map(function(document) {
+                return {
+                  title: document.homepageHead,
+                  subtitle: document.homepageTeaser,
+                  item_url: document._self,
+                  image_url: document.posterImage.reference,
+                };
+              })
+            }
+          }
+        }
+      };
+    }
+    switch (quickReply.payload) {
+      case "LATEST_CRICKET_PAYLOAD":
+        fetch(
+          `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=5&includeFuture=true&topics=sport/cricket`
+        )
+          .then(res => res.json())
+          .then(json => {
+            return generateMessageData(json.documents, senderID);
+          })
+          .then(messageData => callSendAPI(messageData))
+          .catch((error, recipientId) => {
+            console.log(error);
+            const errorMessage = {
+              recipient: { id: recipientId },
+              sender_action: "typing_off"
+            };
+            callSendAPI(errorMessage);
+          });
+      case "LATEST_SCORCHERS_PAYLOAD":
+        fetch(
+          `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=5&includeFuture=true&topics=sport/perth-scorchers`
+        )
+          .then(res => res.json())
+          .then(json => {
+            return generateMessageData(json.documents, senderID);
+          })
+          .then(messageData => callSendAPI(messageData))
+          .catch((error, recipientId) => {
+            console.log(error);
+            const errorMessage = {
+              recipient: { id: recipientId },
+              sender_action: "typing_off"
+            };
+            callSendAPI(errorMessage);
+          });
+      case "LATEST_BBL_PAYLOAD":
+        fetch(
+          `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=5&includeFuture=true&topics=sport/big-bash-league`
+        )
+          .then(res => res.json())
+          .then(json => {
+            return generateMessageData(json.documents, senderID);
+          })
+          .then(messageData => callSendAPI(messageData))
+          .catch((error, recipientId) => {
+            console.log(error);
+            const errorMessage = {
+              recipient: { id: recipientId },
+              sender_action: "typing_off"
+            };
+            callSendAPI(errorMessage);
+          });
+      case "LATEST_WOMENS_PAYLOAD":
+        fetch(
+          `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=5&includeFuture=true&topics=sport/womens-cricket`
+        )
+          .then(res => res.json())
+          .then(json => {
+            return generateMessageData(json.documents, senderID);
+          })
+          .then(messageData => callSendAPI(messageData))
+          .catch((error, recipientId) => {
+            console.log(error);
+            const errorMessage = {
+              recipient: { id: recipientId },
+              sender_action: "typing_off"
+            };
+            callSendAPI(errorMessage);
+          });
+      case "LATEST_AUST_PAYLOAD":
+        fetch(
+          `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=5&includeFuture=true&topics=sport/australian-cricket-team`
+        )
+          .then(res => res.json())
+          .then(json => {
+            return generateMessageData(json.documents, senderID);
+          })
+          .then(messageData => callSendAPI(messageData))
+          .catch((error, recipientId) => {
+            console.log(error);
+            const errorMessage = {
+              recipient: { id: recipientId },
+              sender_action: "typing_off"
+            };
+            callSendAPI(errorMessage);
+          });
+      case "LATEST_ASHES_PAYLOAD":
+        fetch(
+          `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=5&includeFuture=true&topics=sport/the-ashes`
+        )
+          .then(res => res.json())
+          .then(json => {
+            return generateMessageData(json.documents, senderID);
+          })
+          .then(messageData => callSendAPI(messageData))
+          .catch((error, recipientId) => {
+            console.log(error);
+            const errorMessage = {
+              recipient: { id: recipientId },
+              sender_action: "typing_off"
+            };
+            callSendAPI(errorMessage);
+          });
+      case "LATEST_IPL_PAYLOAD":
+        fetch(
+          `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=5&includeFuture=true&topics=sport/indian-premier-league`
+        )
+          .then(res => res.json())
+          .then(json => {
+            return generateMessageData(json.documents, senderID);
+          })
+          .then(messageData => callSendAPI(messageData))
+          .catch((error, recipientId) => {
+            console.log(error);
+            const errorMessage = {
+              recipient: { id: recipientId },
+              sender_action: "typing_off"
+            };
+            callSendAPI(errorMessage);
+          });
+      case "LATEST_WORLD_PAYLOAD":
+        fetch(
+          `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=5&includeFuture=true&topics=sport/cricket-world-cup`
+        )
+          .then(res => res.json())
+          .then(json => {
+            return generateMessageData(json.documents, senderID);
+          })
+          .then(messageData => callSendAPI(messageData))
+          .catch((error, recipientId) => {
+            console.log(error);
+            const errorMessage = {
+              recipient: { id: recipientId },
+              sender_action: "typing_off"
+            };
+            callSendAPI(errorMessage);
+          });
+    }
+
     return;
   }
 
-  sendReadReceipt(senderID)
-
+  sendReadReceipt(senderID);
 
   if (messageText) {
-
-    const regex = /^tell me more about (.*)/g
+    const regex = /^tell me more about (.*)/g;
+    const regex2 = /^(.*)latest(.*)/g;
 
     if (messageText.match(regex)) {
-      const sendBack = regex.exec(messageText)
-      
-      sendPlayerMessage(senderID, sendBack[1])
-    }
+      const sendBack = regex.exec(messageText);
 
+      sendPlayerMessage(senderID, sendBack[1]);
+    }
+    if (messageText.match(regex2)) {
+      // sendHiMessage(event.recipient.id)
+      var messageData = {
+        recipient: {
+          id: senderID
+        },
+        message: {
+          text: "Title?",
+          quick_replies: [
+            {
+              content_type: "text",
+              title: "Cricket",
+              payload: "LATEST_CRICKET_PAYLOAD"
+            },
+            {
+              content_type: "text",
+              title: "Scorchers",
+              payload: "LATEST_SCORCHERS_PAYLOAD"
+            },
+            {
+              content_type: "text",
+              title: "Women’s Cricket",
+              payload: "LATEST_WOMENS_PAYLOAD"
+            },
+            {
+              content_type: "text",
+              title: "Australian Cricket Team",
+              payload: "LATEST_AUST_PAYLOAD"
+            },
+            {
+              content_type: "text",
+              title: "The Ashes",
+              payload: "LATEST_ASHES_PAYLOAD"
+            },
+            {
+              content_type: "text",
+              title: "Big Bash League",
+              payload: "LATEST_BBL_PAYLOAD"
+            },
+            {
+              content_type: "text",
+              title: "Cricket World Cup",
+              payload: "LATEST_WORLD_PAYLOAD"
+            },
+            {
+              content_type: "text",
+              title: "Indian Premier League",
+              payload: "LATEST_IPL_PAYLOAD"
+            }
+          ]
+        }
+      };
+
+      callSendAPI(messageData);
+    }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
   }
 }
-
 
 /*
  * Delivery Confirmation Event
@@ -286,14 +511,15 @@ function receivedDeliveryConfirmation(event) {
 
   if (messageIDs) {
     messageIDs.forEach(function(messageID) {
-      console.log("Received delivery confirmation for message ID: %s",
-        messageID);
+      console.log(
+        "Received delivery confirmation for message ID: %s",
+        messageID
+      );
     });
   }
 
   console.log("All message before %d were delivered.", watermark);
 }
-
 
 /*
  * Postback Event
@@ -311,8 +537,13 @@ function receivedPostback(event) {
   // button for Structured Messages.
   var payload = event.postback.payload;
 
-  console.log("Received postback for user %d and page %d with payload '%s' " +
-    "at %d", senderID, recipientID, payload, timeOfPostback);
+  console.log(
+    "Received postback for user %d and page %d with payload '%s' " + "at %d",
+    senderID,
+    recipientID,
+    payload,
+    timeOfPostback
+  );
 
   // When a postback is called, we'll send a message back to the sender to
   // let them know it was successful
@@ -334,8 +565,11 @@ function receivedMessageRead(event) {
   var watermark = event.read.watermark;
   var sequenceNumber = event.read.seq;
 
-  console.log("Received message read event for watermark %d and sequence " +
-    "number %d", watermark, sequenceNumber);
+  console.log(
+    "Received message read event for watermark %d and sequence " + "number %d",
+    watermark,
+    sequenceNumber
+  );
 }
 
 /*
@@ -353,8 +587,13 @@ function receivedAccountLink(event) {
   var status = event.account_linking.status;
   var authCode = event.account_linking.authorization_code;
 
-  console.log("Received account link event with for user %d with status %s " +
-    "and auth code %s ", senderID, status, authCode);
+  console.log(
+    "Received account link event with for user %d with status %s " +
+      "and auth code %s ",
+    senderID,
+    status,
+    authCode
+  );
 }
 
 /*
@@ -376,7 +615,7 @@ We have static resources like images and videos available to test, but you need 
 Once you've finished these steps, try typing “video” or “image”.
         `
       }
-    }
+    };
 
     callSendAPI(messageData);
   } else {
@@ -398,153 +637,150 @@ Right now, your bot can only respond to a few words. Try out "quick reply", "typ
 For more details on how to create commands, go to https://developers.facebook.com/docs/messenger-platform/reference/send-api.
       `
     }
-  }
+  };
 
   callSendAPI(messageData);
 }
 
 function sendLoadingMessage(recipientId) {
   const loadingMessage = {
-    recipient: {id:recipientId},
-    sender_action: 'typing_on'
-  }
+    recipient: { id: recipientId },
+    sender_action: "typing_on"
+  };
 
-  callSendAPI(loadingMessage)
+  callSendAPI(loadingMessage);
 }
 
 function sendPlayerMessage(recipientId, player) {
+  sendLoadingMessage(recipientId);
 
-    sendLoadingMessage(recipientId)
-  
-    fetch(`https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=100&includeFuture=true&idOrKeyword=${player}`)
+  fetch(
+    `https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=100&includeFuture=true&idOrKeyword=${player}`
+  )
     .then(res => res.json())
 
     .then(json => {
-      const publicationId = json.documents[0]
-      const publication = 
-        {
-          title: publicationId.homepageHead,
-          subtitle: publicationId.homepageTeaser,
-          url: `https://thewest.com.au/${publicationId.slug}`
-        }
-      return publication
+      const publicationId = json.documents[0];
+      const publication = {
+        title: publicationId.homepageHead,
+        subtitle: publicationId.homepageTeaser,
+        url: `https://thewest.com.au/${publicationId.slug}`
+      };
+      return publication;
     })
     .then(publication => {
       const messageData = {
-        recipient: {id: recipientId},
+        recipient: { id: recipientId },
         message: {
           attachment: {
-            type: 'template',
+            type: "template",
             payload: {
-              template_type: 'open_graph',
+              template_type: "open_graph",
 
               elements: [
                 {
                   url: publication.url,
-                  buttons: [{
-                    type: 'web_url',
-                    url: publication.url,
-                    title: 'read more',
-                  }],
+                  buttons: [
+                    {
+                      type: "web_url",
+                      url: publication.url,
+                      title: "read more"
+                    }
+                  ]
                 }
               ]
             }
           }
         }
-      }
-      
-      return messageData
+      };
+
+      return messageData;
     })
     .then(messageData => callSendAPI(messageData))
     .catch((error, recipientId) => {
-      console.log(error)
+      console.log(error);
       const errorMessage = {
-        recipient: {id:recipientId},
-        sender_action: 'typing_off'
-      }
-    
-      callSendAPI(errorMessage)
-    })
-  }
+        recipient: { id: recipientId },
+        sender_action: "typing_off"
+      };
+
+      callSendAPI(errorMessage);
+    });
+}
 
 function sendRandomNewsMessage(recipientId) {
-  const articleNumber = Math.floor(Math.random() * 10) + 1  
+  const articleNumber = Math.floor(Math.random() * 10) + 1;
 
-  fetch('https://content.thewest.com.au/topic/sport/cricket')
-  .then(res => res.json())
-  .then(json => {
-    const publicationId = json.publications[articleNumber]
-    const publication = 
-      {
+  fetch("https://content.thewest.com.au/topic/sport/cricket")
+    .then(res => res.json())
+    .then(json => {
+      const publicationId = json.publications[articleNumber];
+      const publication = {
         title: publicationId.homepageHead,
         subtitle: publicationId.homepageTeaser,
         url: `https://thewest.com.au/${publicationId.slug}`
-      }
-    return publication
-  })
-  .then(publication => {
-    const messageData = {
-      recipient: {id:recipientId},
-      message: {
-        attachment: {
-          template: 'generic',
+      };
+      return publication;
+    })
+    .then(publication => {
+      const messageData = {
+        recipient: { id: recipientId },
+        message: {
+          attachment: {
+            template: "generic",
 
-          payload: {
-            template_type: "generic",
-            elements: {
-              title: publication.title,
-              subtitle: publication.subtitle,
-              buttons: [
-                {
-                  type: 'element_share',
-                  share_contents: { 
-                    attachment: {
-                      type: "template",
-                      payload: {
-                        template_type: "generic",
-                        elements: [
-                          {
-                            title: 'Check out this weird story',
-                            default_action: {
-                              type: 'web_url',
-                              url: publication.url
-                            },
-                            buttons: [
-                              {
-                                type: 'web_url',
-                                url: publication.url,
-                                title: "Read more"
-                              }
-                            ]
-                          }
-                        ]
+            payload: {
+              template_type: "generic",
+              elements: {
+                title: publication.title,
+                subtitle: publication.subtitle,
+                buttons: [
+                  {
+                    type: "element_share",
+                    share_contents: {
+                      attachment: {
+                        type: "template",
+                        payload: {
+                          template_type: "generic",
+                          elements: [
+                            {
+                              title: "Check out this weird story",
+                              default_action: {
+                                type: "web_url",
+                                url: publication.url
+                              },
+                              buttons: [
+                                {
+                                  type: "web_url",
+                                  url: publication.url,
+                                  title: "Read more"
+                                }
+                              ]
+                            }
+                          ]
+                        }
                       }
                     }
                   }
-                }
-              ]
-            },
-            
+                ]
+              }
+            }
           }
         }
-        
-      }
-    }
-    return messageData
-  })
-  .then(messageData => callSendAPI(messageData))
-  .catch((error, recipientId) => {
-    console.log(error)
-    const errorMessage = {
-      recipient: {id:recipientId},
-      sender_action: 'typing_off'
-    }
-  
-    callSendAPI(errorMessage)
-  })
+      };
+      return messageData;
+    })
+    .then(messageData => callSendAPI(messageData))
+    .catch((error, recipientId) => {
+      console.log(error);
+      const errorMessage = {
+        recipient: { id: recipientId },
+        sender_action: "typing_off"
+      };
+
+      callSendAPI(errorMessage);
+    });
 }
-
-
 
 /*
  * Send a read receipt to indicate the message has been read
@@ -603,35 +839,47 @@ function sendTypingOff(recipientId) {
  *
  */
 function callSendAPI(messageData) {
-  request({
-    uri: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: { access_token: PAGE_ACCESS_TOKEN },
-    method: 'POST',
-    json: messageData
+  request(
+    {
+      uri: "https://graph.facebook.com/v2.6/me/messages",
+      qs: { access_token: PAGE_ACCESS_TOKEN },
+      method: "POST",
+      json: messageData
+    },
+    function(error, response, body) {
+      if (!error && response.statusCode == 200) {
+        var recipientId = body.recipient_id;
+        var messageId = body.message_id;
 
-  }, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      var recipientId = body.recipient_id;
-      var messageId = body.message_id;
-
-      if (messageId) {
-        console.log("Successfully sent message with id %s to recipient %s",
-          messageId, recipientId);
+        if (messageId) {
+          console.log(
+            "Successfully sent message with id %s to recipient %s",
+            messageId,
+            recipientId
+          );
+        } else {
+          console.log(
+            "Successfully called Send API for recipient %s",
+            recipientId
+          );
+        }
       } else {
-      console.log("Successfully called Send API for recipient %s",
-        recipientId);
+        console.error(
+          "Failed calling Send API",
+          response.statusCode,
+          response.statusMessage,
+          body.error
+        );
       }
-    } else {
-      console.error("Failed calling Send API", response.statusCode, response.statusMessage, body.error);
     }
-  });
+  );
 }
 
 // Start server
 // Webhooks must be available via SSL with a certificate signed by a valid
 // certificate authority.
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+app.listen(app.get("port"), function() {
+  console.log("Node app is running on port", app.get("port"));
 });
 
 module.exports = app;
