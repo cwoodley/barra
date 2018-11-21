@@ -19,6 +19,10 @@ const bodyParser = require("body-parser"),
   request = require("request"),
   fetch = require("node-fetch");
 
+  const {promisify} = require('util')
+  const fs = require('fs')
+  const readFileAsync = promisify(fs.readFile)
+
 var app = express();
 app.set("port", process.env.PORT || 5000);
 app.set("view engine", "ejs");
@@ -667,6 +671,7 @@ function sendLoadingMessage(recipientId) {
 function sendPlayerMessage(recipientId, player) {
 
   sendLoadingMessage(recipientId)
+  console.log('ok!')
 
   fetch(`https://gazette.swmdigital.io/curation-api/the-west/publication?page=1&page_size=100&includeFuture=true&idOrKeyword=${player}`)
   .then(res => res.json())
@@ -733,15 +738,19 @@ function sendExplainerMessage(recipientId, explainer) {
   })
   .then(definition => {
     const messageData = {
-      recipient: {
-        id: recipientId
-      },
-
-        text: definition[0].definition
+        recipient: {id:recipientId},
+        message: {
+          text: definition[0].definition
+        }
       }
 
+      console.log(messageData)
+
+    return messageData
+  })
+  .then(messageData => {
+    console.log('sending message...')
     callSendAPI(messageData)
-    return
   })
   .catch(error => {
     console.log(error)
@@ -753,15 +762,15 @@ function upperCase(string) {
 }
 
 function getDefinition(data, lookingFor) {
-const definition = data.filter(
-  item => {
-    if (item.term === lookingFor) {
-      return item.definition
+  const definition = data.filter(
+    item => {
+      if (item.term === lookingFor) {
+        return item.definition
+      }
     }
-  }
-)
+  )
 
-return definition
+  return definition
 }
 
 function sendRandomNewsMessage(recipientId) {
